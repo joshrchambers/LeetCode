@@ -1,0 +1,16 @@
+class Solution(object):
+    def majorityElement(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        hashmap = {}
+        for num in nums:
+            if num in hashmap:
+                if hashmap[num] + 1 >= ((len(nums) + 1) / 2):
+                    return num
+                else:
+                    hashmap[num] += 1
+            else:
+                hashmap[num] = 1
+        return num
