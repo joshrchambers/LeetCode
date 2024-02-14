@@ -1,0 +1,17 @@
+class Solution(object):
+    def reverse(self, x):
+        """
+        :type x: int
+        :rtype: int
+        """
+        num = 0
+        flag = False
+        if x < 0:
+            x *= -1
+            flag = True
+        num = int(str(x)[::-1])
+        if num < -2**31 or num > 2**31:
+            num = 0
+        if flag == True:
+            num *= -1
+        return num
