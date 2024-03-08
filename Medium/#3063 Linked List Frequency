@@ -1,0 +1,25 @@
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution(object):
+    def frequenciesOfElements(self, head):
+        """
+        :type head: Optional[ListNode]
+        :rtype: Optional[ListNode]
+        """
+        dictionary = {}
+        curr = head
+        while curr is not None:
+            if curr.val in dictionary:
+                dictionary[curr.val] += 1
+            else:
+                dictionary[curr.val] = 1
+            curr = curr.next
+        ans = ListNode(0)
+        start = ans
+        for value in dictionary.values():
+            start.next = ListNode(value)
+            start = start.next
+        return ans.next
