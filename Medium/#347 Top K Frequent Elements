@@ -1,0 +1,30 @@
+class Solution(object):
+    def topKFrequent(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: List[int]
+        """
+        dictionary = {}
+        ans = []
+        for num in nums:
+            if num in dictionary:
+                dictionary[num] += 1
+            else:
+                dictionary[num] = 1
+        for i in range(k):
+            if k == len(ans):
+                break
+            max_count = 0
+            tmp = []
+            for key, value in dictionary.items():
+                if value > max_count:
+                    tmp = []
+                    tmp.append(key)
+                    max_count = value
+                elif value == max_count:
+                    tmp.append(key)
+            ans.extend(tmp)
+            for j in tmp:
+                dictionary[j] = 0
+        return ans
