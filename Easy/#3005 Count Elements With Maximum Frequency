@@ -1,0 +1,19 @@
+class Solution(object):
+    def maxFrequencyElements(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        dictionary = {}
+        max_count = 0
+        ans = 0
+        for num in nums:
+            if num in dictionary:
+                dictionary[num] += 1
+            else:
+                dictionary[num] = 1
+            max_count = max(max_count, dictionary[num])
+        for value in dictionary.values():
+            if value == max_count:
+                ans += max_count
+        return ans
