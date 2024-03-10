@@ -1,0 +1,13 @@
+class Solution(object):
+    def uniqueOccurrences(self, arr):
+        """
+        :type arr: List[int]
+        :rtype: bool
+        """
+        dictionary = {}
+        for num in arr:
+            if num in dictionary:
+                dictionary[num] += 1
+            else:
+                dictionary[num] = 1
+        return len(set(dictionary.values())) >= len(dictionary)
