@@ -1,0 +1,21 @@
+class Solution(object):
+    def pivotInteger(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        i = 1
+        leftSum = 1
+        rightSum = n
+        if (n == 1): return n
+        while i < n:
+            if leftSum < rightSum:
+                leftSum += i + 1
+                i += 1
+            else:
+                rightSum += n - 1
+                n -= 1
+
+            if leftSum == rightSum and i + 1 == n - 1:
+                return i + 1
+        return -1
